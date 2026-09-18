@@ -107,3 +107,22 @@ public class Login {
 
         return outputMessage;
     }
+
+// Method to log the user in
+    public boolean loginUser(String username, String password) {
+        if (username.equals(savedUsername) && password.equals(savedPassword)) {
+            return true; // Correct
+        } else {
+            return false; // Wrong
+        }
+    }
+
+    // Method to return the login message
+    public String returnLoginStatus(boolean isLoggedIn) {
+        if (isLoggedIn == true) {
+            return "Login Successful";
+        } else {
+            return "Login Failed";
+        }
+    }
+}
