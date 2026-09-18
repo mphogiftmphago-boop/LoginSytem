@@ -72,4 +72,38 @@ public class Login {
             return false;
         }
     }
+// Method to register the user and give back the correct message
 
+    public String registerUser(String username, String password, String cellPhone) {
+        String outputMessage = "";
+
+        // Check username
+        if (checkUserName(username) == false) {
+            outputMessage = outputMessage + "Username is not correctly formatted; please ensure that your username contains an underscore and is no more than five characters in length.\n";
+        } else {
+            outputMessage = outputMessage + "Username successfully captured.\n";
+        }
+
+        // Check password
+        if (checkPasswordComplexity(password) == false) {
+            outputMessage = outputMessage + "Password is not correctly formatted; please ensure that the password contains at least eight characters, a capital letter, a number, and a special character.\n";
+        } else {
+            outputMessage = outputMessage + "Password successfully captured.\n";
+        }
+
+        // Check cell phone
+        if (checkCellPhoneNumber(cellPhone) == false) {
+            outputMessage = outputMessage + "Cell phone number incorrectly formatted or does not contain international code.\n";
+        } else {
+            outputMessage = outputMessage + "Cell phone number successfully added.\n";
+        }
+
+        // If EVERYTHING is perfect, save the details so they can log in later
+        if (checkUserName(username) == true && checkPasswordComplexity(password) == true && checkCellPhoneNumber(cellPhone) == true) {
+            savedUsername = username;
+            savedPassword = password;
+            savedCellPhone = cellPhone;
+        }
+
+        return outputMessage;
+    }
